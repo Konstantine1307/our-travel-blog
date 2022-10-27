@@ -6,6 +6,8 @@ import Layout from "@/components/layout";
 import MoreStories from "@/components/more-stories";
 import PostBody from "@/components/post-body";
 import PostHeader from "@/components/post-header";
+import Map from '@/components/Map';
+import Date from '@/components/date';
 import SectionSeparator from "@/components/section-separator";
 import { request } from "@/lib/datocms";
 import { metaTagsFragment, responsiveImageFragment } from "@/lib/fragments";
@@ -47,6 +49,11 @@ export async function getStaticProps({ params, preview = false }) {
                 }
               }
             }
+          }
+          headline
+          postLocation {
+            latitude
+            longitude
           }
           date
           ogImage: coverImage{
@@ -133,6 +140,24 @@ export default function Post({ subscription, preview }) {
             date={post.date}
             author={post.author}
           />
+          <div className='w-full flex flex-col md:flex-row space-y-8 md:space-y-0 justify-evenly -mb-12 bg-slate-200 pt-4 pb-2 px-2 md:px-4 overscroll-auto'>
+            <div className='flex flex-col md:basis-1/4 space-y-6 md:space-y-10'>
+              <div className='text-xl pl-3'>
+                <Date dateString={post.date} />
+              </div>
+              <div className='max-w-sm'>
+                <p className='text-xl px-3'>{post.headline}</p>
+              </div>
+            </div>
+            <div className='md:basis-1/2'>
+              <Map
+                geopoint={post.postLocation}
+                latitude={post.postLocation.latitude}
+                longitude={post.postLocation.longitude}
+              />
+            </div>
+          </div>
+          <SectionSeparator />
           <PostBody content={post.content} />
         </article>
         <SectionSeparator />
