@@ -2,7 +2,8 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useRef, useEffect, useState } from 'react';
 
-  mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAP_API;
+  mapboxgl.accessToken =
+    'pk.eyJ1Ijoia29uc3RhbnRpbmUxMyIsImEiOiJjbDhybTlvNWgxeWk2M3dxd2l0NHJ3OGxnIn0.HLCD_0jre2PlJnhzkEX8fQ';
 
 export default function Map({ longitude, latitude }) {
   const mapContainer = useRef(null);
