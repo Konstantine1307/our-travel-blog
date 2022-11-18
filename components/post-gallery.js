@@ -1,60 +1,82 @@
-import { Gallery } from 'react-photoswipe-gallery';
-import 'photoswipe/dist/photoswipe.css';
-import { Item } from 'react-photoswipe-gallery';
+import Image from 'next/image';
 
-function GalleryImgCard(props) {
-  const smallItemStyles = {
-    cursor: 'pointer',
-    objectFit: 'cover',
-    width: '250px',
-    height: '150px',
-    borderRadius: '10px',
-    boxShadow: '0 .5rem 1rem rgba(0, 0, 0, 0.5)',
+import { useState } from 'react';
+import React, { useEffect } from 'react';
+import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import 'photoswipe/style.css';
+
+import Modal from './Modal';
+
+export default function PostGallery({ imageGallery }) {
+
+  const [clickedImg, setClickedImg] = useState('');
+  const [currentIndex, setCurrentIndex] = useState('');
+
+  const handleClick = (item, index) => {
+    setCurrentIndex(index);
+    setClickedImg(item.url);
+  };
+
+  const handelRotationRight = () => {
+    const totalLength = imageGallery.length;
+    if (currentIndex + 1 >= totalLength) {
+      setCurrentIndex(0);
+      const newUrl = imageGallery[0].url;
+      setClickedImg(newUrl);
+      return;
+    }
+    const newIndex = currentIndex + 1;
+    const newUrl = imageGallery.filter((item) => {
+      return imageGallery.indexOf(item) === newIndex;
+    });
+    const newItem = newUrl[0].url;
+    setClickedImg(newItem);
+    setCurrentIndex(newIndex);
+  };
+
+  const handelRotationLeft = () => {
+    const totalLength = imageGallery.length;
+    if (currentIndex === 0) {
+      setCurrentIndex(totalLength - 1);
+      const newUrl = imageGallery[totalLength - 1].url;
+      setClickedImg(newUrl);
+      return;
+    }
+    const newIndex = currentIndex - 1;
+    const newUrl = imageGallery.filter((item) => {
+      return imageGallery.indexOf(item) === newIndex;
+    });
+    const newItem = newUrl[0].url;
+    setClickedImg(newItem);
+    setCurrentIndex(newIndex);
   };
 
   return (
-    <Item
-      cropped
-      original={props.url}
-      thumbnail={props.url}
-      width={1000}
-      height={675}
-      alt={props.alt}
-      caption={props.title}>
-
-      {({ ref, open }) => (
-        <img
-          style={smallItemStyles}
-          src={props.url}
-          alt={props.alt}
-          ref={ref}
-          onClick={open}
-          className='md:hover:opacity-50 md:hover:scale-110 duration-300 '
-        />
-      )}
-    </Item>
-  );
-}
-
-function PostGallery({imageGallery}) {
-  const imgCards = imageGallery.map((item, index) => {
-    return (
-
-      <GalleryImgCard
-        key={index}
-        {...item}
-      />
-    
-    );
-  });
-
-  return (
-    <Gallery withCaption>
-      <div className='flex flex-1 flex-wrap justify-center items-center bg-slate-200 p-2 space-x-0 md:space-x-8 md:gap-y-8 space-y-8 md:space-y-0 max-w-5xl mx-auto'>
-        {imgCards}
+    <div className='flex flex-1 flex-wrap justify-center items-center bg-slate-200 p-2 space-x-0 md:space-x-8 md:gap-y-8 space-y-8 md:space-y-0'>
+      {imageGallery.map((item, index) => (
+        <div
+          className='shadow-slate-500 shadow-xl hover:scale-110 transition duration-200 md:first-of-type:ml-8'
+          key={index}>
+          <Image
+            className='cursor-pointer'
+            width={250}
+            height={250}
+            src={item.url}
+            alt='image gallery'
+            onClick={() => handleClick(item, index)}
+          />
+        </div>
+      ))}
+      <div>
+        {clickedImg && (
+          <Modal
+            clickedImg={clickedImg}
+            handelRotationRight={handelRotationRight}
+            setClickedImg={setClickedImg}
+            handelRotationLeft={handelRotationLeft}
+          />
+        )}
       </div>
-    </Gallery>
+    </div>
   );
 }
-
-export default PostGallery
