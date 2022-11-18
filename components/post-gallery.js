@@ -1,10 +1,5 @@
 import Image from 'next/image';
-
 import { useState } from 'react';
-import React, { useEffect } from 'react';
-import PhotoSwipeLightbox from 'photoswipe/lightbox';
-import 'photoswipe/style.css';
-
 import Modal from './Modal';
 
 export default function PostGallery({ imageGallery }) {
