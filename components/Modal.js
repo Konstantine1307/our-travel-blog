@@ -16,25 +16,27 @@ const Modal = ({
       <div
         className='fixed top-0 left-0 right-0 w-auto  h-full dismiss mx-auto bg-slate-800 bg-opacity-80 flex justify-center items-center wrapper z-10'
         onClick={handleClick}>
-        <Image
-          className='mx-auto shadow-slate-900 max-w-[80%] max-h-[80%]  shadow-lg'
-          width={2000}
-          height={1000}
-          src={clickedImg}
-          alt='bigger pic'
-        />
+     
+          <Image
+            className='mx-auto shadow-slate-900  shadow-lg'
+            width={1000}
+            height={675}
+            src={clickedImg}
+            alt='bigger pic'
+          />
+  
         <span
-          className='absolute top-0 right-5 text-4xl text-gray-100 cursor-pointer dismiss'
+          className='absolute top-0 right-5 text-4xl text-gray-100 bg-slate-900 p-3 cursor-pointer dismiss'
           onClick={handleClick}>
           X
         </span>
         <div
           onClick={handelRotationLeft}
-          className='flex justify-between items-center absolute md:w-12 md:h-12 left-0 z-10 text-gray-100 overlay-arrows_left'>
+          className='flex justify-between items-center absolute md:w-20 md:h-12 left-0 z-10 bg-slate-900 text-gray-100 overlay-arrows_left p-3 md:p-0'>
           <div>
             <svg
               xmlns='http://www.w3.org/2000/svg'
-              className='h-6 w-6 md:h-12 md:w-12'
+              className='h-8 w-8 md:h-12 md:w-20'
               viewBox='0 0 20 20'
               fill='currentColor'>
               <path
@@ -47,11 +49,11 @@ const Modal = ({
         </div>
         <div
           onClick={handelRotationRight}
-          className='flex justify-between items-center absolute right-0  md:w-12 md:h-12 z-10  text-gray-100 overlay-arrows_right'>
+          className='flex justify-between items-center absolute right-0  md:w-20 md:h-12 z-10  bg-slate-900  text-gray-100 overlay-arrows_right p-3 md:p-0'>
           <div>
             <svg
               xmlns='http://www.w3.org/2000/svg'
-              className='h-6 w-6 md:h-12 md:w-12'
+              className='h-8 w-8 md:h-12 md:w-20'
               viewBox='0 0 20 20'
               fill='currentColor'>
               <path

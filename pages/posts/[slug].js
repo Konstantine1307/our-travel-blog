@@ -172,7 +172,6 @@ export default function Post({ subscription, preview }) {
           <PostBody content={post.content} />
           <div className='relative py-6 mx-auto'>
             <GalleryTitle>{post.galleryTitle}</GalleryTitle>
-            {/* <PostGallery imageGallery={post.imageGallery} /> */}
             <PostGallery imageGallery={post.imageGallery} />
           </div>
         </article>
