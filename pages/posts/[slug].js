@@ -11,8 +11,8 @@ import Date from '@/components/date';
 import SectionSeparator from "@/components/section-separator";
 import { request } from "@/lib/datocms";
 import { metaTagsFragment, responsiveImageFragment } from "@/lib/fragments";
-import PostGallery from "@/components/post-gallery";
 import GalleryTitle from "@/components/gallery-title";
+import PostGallery from "@/components/post-gallery";
 
 export async function getStaticPaths() {
   const data = await request({ query: `{ allPosts { slug } }` });
@@ -59,8 +59,10 @@ export async function getStaticProps({ params, preview = false }) {
           }
           galleryTitle
           imageGallery {
+            alt
+            title
             url
-            responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 }) {
+            responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 1000, h: 0.675 }) {
                     ...responsiveImageFragment
                   }
           }
@@ -170,6 +172,7 @@ export default function Post({ subscription, preview }) {
           <PostBody content={post.content} />
           <div className='relative py-6 mx-auto'>
             <GalleryTitle>{post.galleryTitle}</GalleryTitle>
+            {/* <PostGallery imageGallery={post.imageGallery} /> */}
             <PostGallery imageGallery={post.imageGallery} />
           </div>
         </article>
