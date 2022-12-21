@@ -1,8 +1,9 @@
 import Image from 'next/image';
 import { useState } from 'react';
+import ImagePostTitle from './image-post-title';
 import Modal from './Modal';
 
-export default function PostGallery({ imageGallery }) {
+export default function PostGallery({ imageGallery, title }) {
 
   const [clickedImg, setClickedImg] = useState('');
   const [currentIndex, setCurrentIndex] = useState('');
@@ -57,9 +58,11 @@ export default function PostGallery({ imageGallery }) {
             width={250}
             height={250}
             src={item.url}
-            alt='image gallery'
+            alt={item.alt}
+            title={item.title}
             onClick={() => handleClick(item, index)}
           />
+          <ImagePostTitle>{item.title}</ImagePostTitle>
         </div>
       ))}
       <div>
@@ -69,9 +72,12 @@ export default function PostGallery({ imageGallery }) {
             handelRotationRight={handelRotationRight}
             setClickedImg={setClickedImg}
             handelRotationLeft={handelRotationLeft}
+            
           />
         )}
+        <ImagePostTitle>{title}</ImagePostTitle>
       </div>
+      
     </div>
   );
 }

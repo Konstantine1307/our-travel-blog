@@ -13,6 +13,7 @@ import { request } from "@/lib/datocms";
 import { metaTagsFragment, responsiveImageFragment } from "@/lib/fragments";
 import GalleryTitle from "@/components/gallery-title";
 import PostGallery from "@/components/post-gallery";
+import DisqusComments from "@/components/disqusComments";
 
 export async function getStaticPaths() {
   const data = await request({ query: `{ allPosts { slug } }` });
@@ -157,7 +158,7 @@ export default function Post({ subscription, preview }) {
                 <Date dateString={post.date} />
               </div>
               <div className='max-w-sm'>
-                <p className='text-xl px-3'>{post.headline}</p>
+                <p className='text-normal px-3'>{post.headline}</p>
               </div>
             </div>
             <div className='md:basis-1/2'>
@@ -174,6 +175,7 @@ export default function Post({ subscription, preview }) {
             <GalleryTitle>{post.galleryTitle}</GalleryTitle>
             <PostGallery imageGallery={post.imageGallery} />
           </div>
+        <DisqusComments />
         </article>
         <SectionSeparator />
         {morePosts.length > 0 && <MoreStories posts={morePosts} />}
