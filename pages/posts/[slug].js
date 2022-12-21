@@ -175,7 +175,9 @@ export default function Post({ subscription, preview }) {
             <GalleryTitle>{post.galleryTitle}</GalleryTitle>
             <PostGallery imageGallery={post.imageGallery} />
           </div>
+        <div className="max-w-2xl mx-auto">
         <DisqusComments />
+        </div>
         </article>
         <SectionSeparator />
         {morePosts.length > 0 && <MoreStories posts={morePosts} />}
