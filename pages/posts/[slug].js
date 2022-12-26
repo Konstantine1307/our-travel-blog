@@ -13,18 +13,30 @@ import { request } from "@/lib/datocms";
 import { metaTagsFragment, responsiveImageFragment } from "@/lib/fragments";
 import GalleryTitle from "@/components/gallery-title";
 import PostGallery from "@/components/post-gallery";
+import LanguageBar from "@/components/language-bar";
 
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ locales }) {
   const data = await request({ query: `{ allPosts { slug } }` });
+  const pathsArray = [];
+  // return {
+  //   paths: data.allPosts.map((post) => `/posts/${post.slug}`),
+  //   fallback: false,
+  // };
+  data.allPosts.map((post) => {
+    locales.map((language) => {
+      pathsArray.push({ params: { slug: post.slug }, locale: language });
+    });
+  });
 
   return {
-    paths: data.allPosts.map((post) => `/posts/${post.slug}`),
+    paths: pathsArray,
     fallback: false,
   };
 }
 
-export async function getStaticProps({ params, preview = false }) {
+export async function getStaticProps({ params, preview = false, locale }) {
+  const formattedLocale = locale.split("-")[0];
   const graphqlRequest = {
     query: `
       query PostBySlug($slug: String) {
@@ -33,7 +45,7 @@ export async function getStaticProps({ params, preview = false }) {
             ...metaTagsFragment
           }
         }
-        post(filter: {slug: {eq: $slug}}) {
+        post(locale: ${formattedLocale}, filter: {slug: {eq: $slug}}) {
           seo: _seoMetaTags {
             ...metaTagsFragment
           }
@@ -86,7 +98,7 @@ export async function getStaticProps({ params, preview = false }) {
           }
         }
 
-        morePosts: allPosts(orderBy: date_DESC, first: 2, filter: {slug: {neq: $slug}}) {
+        morePosts: allPosts(locale: ${formattedLocale}, orderBy: date_DESC, first: 2, filter: {slug: {neq: $slug}}) {
           title
           slug
           excerpt
@@ -144,6 +156,7 @@ export default function Post({ subscription, preview }) {
     <Layout preview={preview}>
       <Head>{renderMetaTags(metaTags)}</Head>
       <Container>
+        <LanguageBar />
         <Header />
         <article>
           <PostHeader
