@@ -20,10 +20,10 @@ export default function PostPreview({
           responsiveImage={coverImage.responsiveImage}
         />
       </div>
-      <h3 className='text-3xl mb-3 leading-snug'>
+      <h3 className='text-2xl lg:text-3xl mb-3 leading-snug bg-slate-300 p-1'>
         <Link
           href={`/posts/${slug}`}
-          className='hover:underline'>
+          className='underline underline-offset-4'>
           {title}
         </Link>
       </h3>

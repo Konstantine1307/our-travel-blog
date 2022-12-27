@@ -9,7 +9,7 @@ export default function Intro() {
       </div>
   
       <div>
-        <h3 className="text-xl font-normal  md: pr-8">Follow our adventures, places and people we have visited and met in our trips.</h3>
+        <h3 className="text-xl font-normal  md: pr-8">Follow our adventures, places and people we have visited and met in our trips. Click on the main image or the title of each post to start reading.</h3>
       
       <p className="my-8 font-bold italic text-right">OUR LATEST POST:</p>
       </div>
