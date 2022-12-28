@@ -22,7 +22,7 @@ export default function HeroPost({
       </div>
       <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28">
         <div>
-          <h3 className="mb-4 text-3xl lg:text-3xl p-1 rounded-md leading-tight hover:scale-105 duration-200 text-emerald-900">
+          <h3 className="mb-4 text-2xl lg:text-3xl p-1 rounded-md leading-tight hover:scale-105 duration-200 text-emerald-900">
             <Link href={`/posts/${slug}`}
              className="underline underline-offset-4 bg-emerald-50 p-1">{title}
             </Link>

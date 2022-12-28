@@ -8,7 +8,7 @@ export default function Intro() {
           <h1 className="text-4xl md:text-5xl font-bold tracking-tighter leading-tight md:pr-8">
             Johnny & Leslie Travel Blog.
           </h1>
-        <div className="text-2xl font-semibold underline underline-offset-4">
+        <div className="text-2xl font-semibold underline underline-offset-4 md:mr-8">
           <Link href="mailto:info@tgcottage.com">Get in touch</Link>
         </div>
       </div>

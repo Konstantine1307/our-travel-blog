@@ -5,7 +5,7 @@ export default function PostTitle({ children }) {
     <h1 className="text-2xl md:text-4xl font-bold tracking-tighter leading-tight md:leading-none mb-12 text-center md:text-left text-emerald-900">
       {children}
     </h1>
-    <Link href="mailto:info@tgcottage.com" className="text-2xl font-semibold underline underline-offset-4">Get in touch</Link>
+      <Link href="mailto:info@tgcottage.com" className="text-lg md:text-2xl font-semibold underline underline-offset-4 md:mr-8">Get in touch</Link>
     </section>
   );
 }
