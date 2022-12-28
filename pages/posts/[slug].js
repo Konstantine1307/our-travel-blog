@@ -14,7 +14,7 @@ import { metaTagsFragment, responsiveImageFragment } from "@/lib/fragments";
 import GalleryTitle from "@/components/gallery-title";
 import PostGallery from "@/components/post-gallery";
 import LanguageBar from "@/components/language-bar";
-import { DiscussionEmbed } from "disqus-react";
+
 
 
 export async function getStaticPaths({ locales }) {
