@@ -189,16 +189,6 @@ export default function Post({ subscription, preview }) {
             <GalleryTitle>{post.galleryTitle}</GalleryTitle>
             <PostGallery imageGallery={post.imageGallery} />
           </div>
-          <DiscussionEmbed
-            shortname='https-johnnyleslie-com'
-            config={
-              {
-                url: "https://www.johnnyleslie.com/posts/[slug].js",
-                identifier: post.id,
-                title: post.title,
-              }
-            }
-          />
         </article>
         <SectionSeparator />
         {morePosts.length > 0 && <MoreStories posts={morePosts} />}
