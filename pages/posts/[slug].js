@@ -166,7 +166,7 @@ export default function Post({ subscription, preview }) {
             date={post.date}
             author={post.author}
           />
-          <div className='w-full flex flex-col md:flex-row space-y-8 md:space-y-0 justify-evenly -mb-12 bg-slate-200 pt-4 pb-2 px-2 md:px-4 overscroll-auto'>
+          <div className='w-full flex flex-col md:flex-row space-y-8 md:space-y-0 justify-evenly bg-slate-200 pt-4 pb-2 px-2 md:px-4 overscroll-auto'>
             <div className='flex flex-col md:basis-1/4 space-y-6 md:space-y-10'>
               <div className='text-xl pl-3'>
                 <Date dateString={post.date} />

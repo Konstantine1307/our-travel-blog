@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Intro() {
   return (
     <section>    
@@ -6,13 +8,17 @@ export default function Intro() {
           <h1 className="text-4xl md:text-5xl font-bold tracking-tighter leading-tight md:pr-8">
             Johnny & Leslie Travel Blog.
           </h1>
+        <div className="text-2xl font-semibold underline underline-offset-4">
+          <Link href="mailto:info@tgcottage.com">Get in touch</Link>
+        </div>
       </div>
   
       <div>
         <h3 className="text-xl font-normal  md: pr-8">Follow our adventures, places and people we have visited and met in our trips. Click on the main image or the title of each post to start reading.</h3>
       
-      <p className="my-8 font-bold italic text-right">OUR LATEST POST:</p>
+      <p className="my-8 font-bold italic text-right mr-12">OUR LATEST POST:</p>
       </div>
+      
     </section>
   );
 }

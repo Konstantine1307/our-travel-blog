@@ -48,7 +48,7 @@ export default function PostGallery({ imageGallery, title }) {
   };
 
   return (
-    <div className='flex flex-1 flex-wrap justify-center items-center bg-slate-200 p-2 space-x-0 md:space-x-8 md:gap-y-8 space-y-8 md:space-y-0'>
+    <div className='flex flex-1 flex-wrap justify-center items-center bg-slate-200 p-4 pb-8 space-x-0 md:space-x-8 md:gap-y-8 space-y-8 md:space-y-0'>
       {imageGallery.map((item, index) => (
         <div
           className='shadow-slate-500 shadow-xl hover:scale-110 transition duration-200 md:first-of-type:ml-8'
