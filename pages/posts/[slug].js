@@ -14,6 +14,7 @@ import { metaTagsFragment, responsiveImageFragment } from "@/lib/fragments";
 import GalleryTitle from "@/components/gallery-title";
 import PostGallery from "@/components/post-gallery";
 import LanguageBar from "@/components/language-bar";
+import CommentsBox from "@/components/comments";
 
 
 
@@ -188,6 +189,9 @@ export default function Post({ subscription, preview }) {
           <div className='relative py-6 mx-auto'>
             <GalleryTitle>{post.galleryTitle}</GalleryTitle>
             <PostGallery imageGallery={post.imageGallery} />
+          </div>
+          <div class="text-center">
+            <CommentsBox />
           </div>
         </article>
         <SectionSeparator />
