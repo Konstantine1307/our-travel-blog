@@ -15,6 +15,7 @@ import GalleryTitle from "@/components/gallery-title";
 import PostGallery from "@/components/post-gallery";
 import LanguageBar from "@/components/language-bar";
 // import CommentsBox from "@/components/comments";
+import { DiscussionEmbed } from "disqus-react";
 
 
 
@@ -149,10 +150,15 @@ export async function getStaticProps({ params, preview = false, locale }) {
 
 export default function Post({ subscription, preview }) {
   const {
-    data: { site, post, morePosts },
+    data: { site, post, morePosts, title },
   } = useQuerySubscription(subscription);
 
   const metaTags = post.seo.concat(site.favicon);
+
+  const disqusConfig = {
+    shortname: "https-johnnyleslie-com",
+    config: { identifier: `${post.slug} ${post.title}` },
+  }
 
   return (
     <Layout preview={preview}>
@@ -189,10 +195,8 @@ export default function Post({ subscription, preview }) {
           <div className='relative py-6 mx-auto'>
             <GalleryTitle>{post.galleryTitle}</GalleryTitle>
             <PostGallery imageGallery={post.imageGallery} />
-          </div>
-          {/* <div class="text-center">
-            <CommentsBox />
-          </div> */}
+          </div>      
+            <DiscussionEmbed {...disqusConfig} />         
         </article>
         <SectionSeparator />
         {morePosts.length > 0 && <MoreStories posts={morePosts} />}
