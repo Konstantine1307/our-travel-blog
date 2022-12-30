@@ -101,7 +101,7 @@ export async function getStaticProps({ params, preview = false, locale }) {
           }
         }
 
-        morePosts: allPosts(locale: ${formattedLocale}, orderBy: date_DESC, first: 2, filter: {slug: {neq: $slug}}) {
+        morePosts: allPosts(locale: ${formattedLocale}, orderBy: date_DESC, first: 5, filter: {slug: {neq: $slug}}) {
           title
           slug
           excerpt
