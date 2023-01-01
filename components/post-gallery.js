@@ -55,7 +55,7 @@ export default function PostGallery({ imageGallery, title }) {
           key={index}>
           <Image
             className='cursor-pointer'
-            width={350}
+            width={300}
             height={250}
             src={item.url}
             alt={item.alt}
